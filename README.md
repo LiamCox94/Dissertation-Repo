@@ -18,4 +18,4 @@ I have also included everything required to run the Python data retrieval applic
   $ Python3 app.py
 ```
 
-I have included the script to collect the data from the experiments and place it into a csv file. This script is called csv.
+I have included the script to collect the data from the experiments and place it into a csv file. This script is called Python_CSV_creator.
