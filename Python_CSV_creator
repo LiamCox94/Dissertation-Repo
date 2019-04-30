@@ -1,0 +1,18 @@
+#Import to use the serial line, real time and create csv files
+import serial
+import time
+import csv
+
+ser = serial.Serial('/dev/ttyACM0') #Define serial line to open
+ser.flushInput() #Flush the serial line before opening
+row = ['val','min','mean','max','tot'] #define array to hold experiment values
+while True: 
+	try:
+		ser_bytes = ser.readline() #Start reading the serial line
+		decoded_bytes = ser_bytes.decode("utf-8") #decode the serial message
+		print(decoded_bytes) #print the decoded message
+		with open("test.csv","a") as f: #open/create csv file
+			writer = csv.writer(f,delimiter=",") #use ',' as the spacer in the csv file
+			writer.writerow([decoded_bytes]) #write decoded message from serial line to the csv file
+	except:
+		print("Keyboard Interrupt")
